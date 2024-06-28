@@ -36,6 +36,6 @@ echo "busybox awk 'BEGIN {print $font*12}' > $media/res3" > $media/02-$(basename
 sh $media/02-$(basename $0)
 sizefont=$(cat $media/res3)
 echo "Auto fontsize from res is: $sizefont"
-busybox echo -e "#!/system/bin/sh\nffmpeg -i \"$(dirname $(realpath $1))\" -vf subtitles=\"$(dirname $(realpath $2))\":force_style='fontsize=$sizefont' -preset veryfast $(dirname $1)/$(date +%s).mkv" > $media/03-$(basename $0)
+busybox echo -e "#!/system/bin/sh\nffmpeg -i \"$(dirname $(realpath $1))/$(basename $1)\" -vf subtitles=\"$(dirname $(realpath $2))/$(basename $2)\":force_style='fontsize=$sizefont' -preset veryfast $(dirname $1)/$(date +%s).mkv" > $media/03-$(basename $0)
 sleep 2
 echo "$(basename $0) is done"
